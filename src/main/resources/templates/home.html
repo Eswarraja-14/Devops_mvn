@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .navbar h1 {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .navbar form {
+            display: inline;
+        }
+
+        .navbar button {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .navbar button:hover {
+            background: #c0392b;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .welcome-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .welcome-card p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .user-info p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .user-info strong {
+            color: #667eea;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>My Application</h1>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2>Welcome!</h2>
+            <p>You have successfully logged in.</p>
+
+            <div class="user-info">
+                <p>
+                    <strong>Username:</strong>
+                    <span sec:authentication="name"></span>
+                </p>
+                <p>
+                    <strong>Roles:</strong>
+                    <span sec:authentication="authorities"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
