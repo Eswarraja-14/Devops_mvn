@@ -1,18 +1,18 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+@RestController
 public class LoginController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/")
+    public String hello() {
+        return "Hello";
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
+    @GetMapping("/hello")
+    public String sayhello() {
+        return "hello mvn";
     }
 }
